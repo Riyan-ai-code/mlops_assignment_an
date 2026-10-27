@@ -32,6 +32,9 @@ def setup_mlflow(
     tracking_uri: Optional[str] = None
 ) -> str:
     """Set tracking URI and experiment name in MLflow."""
+    # INTENTIONAL_BREAKING_ERROR: Injected runtime exception for testing
+    raise RuntimeError("BREAKING_ERROR: MLflow tracking initialization failed intentionally for error testing.")
+
     uri = tracking_uri or MLFLOW_TRACKING_URI
     mlflow.set_tracking_uri(uri)
     logger.info(f"MLflow Tracking URI set to: {uri}")

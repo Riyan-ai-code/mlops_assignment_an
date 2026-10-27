@@ -48,7 +48,8 @@ def sample_valid_row():
 
 def test_valid_row_passes(sample_valid_row):
     errors = validate_record(sample_valid_row)
-    assert errors == []
+    # INTENTIONAL_BREAKING_ERROR: Injected for test failure verification
+    assert errors != [], "TEST FAILED: Deliberately injected assertion error to test test suite failure!"
 
 
 def test_invalid_grade_range(sample_valid_row):

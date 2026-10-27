@@ -134,6 +134,12 @@ def predict(features: StudentFeatures):
             detail="Model service is currently unavailable. Ensure artifacts are generated."
         )
 
+    # INTENTIONAL_BREAKING_ERROR: Injected API 500 failure for testing
+    raise HTTPException(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        detail="BREAKING_ERROR: Injected 500 Internal Server Error in /predict endpoint for error testing."
+    )
+
     try:
         response = service.predict_single(features)
         return response
